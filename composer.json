@@ -1,0 +1,28 @@
+{
+    "name": "mata/mata-module-menu",
+    "description": "Manages and groups modules for MATA",
+    "keywords": ["yii2", "mata-module-menu", "menu", "mata", "navigation"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "support": {
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "mata/mata-framework": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "mata\\modulemenu\\": ""
+        }
+    },
+    "scripts": {
+           "post-package-install": ["mata\\modulemenu\\installers\\Installer::postPackageInstall"]
+       },
+    "extra": {
+        "bootstrap": "mata\\user\\Bootstrap",
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
