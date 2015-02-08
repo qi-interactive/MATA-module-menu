@@ -26,9 +26,11 @@ class m150208_130115_init extends Migration
 			], $this->tableOptions);
 
 		$this->createTable('{{%matamodulemenu_module}}', [
-			'Id'        => Schema::TYPE_INTEGER . ' PRIMARY KEY',
+			'Id'        => Schema::TYPE_PK,
 			'Name'           => Schema::TYPE_STRING . '(64)',
 			'GroupId'   => Schema::TYPE_INTEGER . '(11) NOT NULL',
+			'Location'             => Schema::TYPE_STRING . '(255) NOT NULL',
+			'Enabled' 	=> Schema::TYPE_SMALLINT . '(1) NOT NULL DEFAULT 1',
 			'Config' => Schema::TYPE_TEXT,
 			], $this->tableOptions);
 

@@ -10,7 +10,7 @@
  */
 
 namespace mata\modulemenu;
-use yii\base\Module as BaseModule;
+use mata\base\Module as BaseModule;
 
 /**
  * This is the main module class for the Yii2-user.
@@ -21,6 +21,11 @@ use yii\base\Module as BaseModule;
  */
 class Module extends BaseModule {
 
-
-
+	public function getVersion() {
+		return 1.0;
+	}
+	
+	public function getName() {
+		return "Module Menu";
+	}
 }
