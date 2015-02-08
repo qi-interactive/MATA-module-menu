@@ -19,10 +19,6 @@
            "post-package-install": ["mata\\modulemenu\\installers\\Installer::postPackageInstall"]
        },
     "extra": {
-        "bootstrap": "mata\\user\\Bootstrap",
-        "asset-installer-paths": {
-            "npm-asset-library": "vendor/npm",
-            "bower-asset-library": "vendor/bower"
-        }
+        "bootstrap": "mata\\user\\Bootstrap"
     }
 }
