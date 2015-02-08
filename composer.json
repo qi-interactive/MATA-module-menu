@@ -19,6 +19,6 @@
            "post-package-install": ["mata\\modulemenu\\installers\\Installer::postPackageInstall"]
        },
     "extra": {
-        "bootstrap": "mata\\user\\Bootstrap"
+        "bootstrap": "mata\\modulemenu\\Bootstrap"
     }
 }
