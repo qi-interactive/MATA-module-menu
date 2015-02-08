@@ -29,6 +29,7 @@ class Bootstrap implements BootstrapInterface {
     /** @inheritdoc */
     public function bootstrap($app) {
         echo "Bootstrapping Menus";
+        exit;
     }
 }
 
