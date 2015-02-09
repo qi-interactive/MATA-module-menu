@@ -18,10 +18,10 @@ modules:
 coverage:
     enabled: true   
     include: 
-        ../*
+        - ../*
     exclude:
-        ../vendor/*
-        ../views/*
-        ../assets/*
-        ../migrations/*
-        ../tests/*
+        - ../vendor/*
+        - ../views/*
+        - ../assets/*
+        - ../migrations/*
+        - ../tests/*
