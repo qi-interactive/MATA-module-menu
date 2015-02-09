@@ -17,11 +17,13 @@ modules:
             dump: codeception/_data/dump.sql
 coverage:
     enabled: true   
-    include: 
-        - ../*
     exclude:
         - ../vendor/*
         - ../views/*
         - ../assets/*
         - ../migrations/*
         - ../tests/*
+        - ../*
+    include: 
+        - ../*
+        - ../*.php
