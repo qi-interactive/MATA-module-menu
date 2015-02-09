@@ -19,6 +19,7 @@ coverage:
     enabled: true   
     include: 
         - ../**/*.php
+        - ../*.php
     exclude:
         - ../vendor/*
         - ../views/*
