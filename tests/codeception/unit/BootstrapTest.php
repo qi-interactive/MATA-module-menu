@@ -31,13 +31,21 @@ class BootstrapTestCase extends TestCase {
 	}
 
 	public function testHasModuleBeenLoaded() {
-		
+
 		$bootstrap = new \mata\modulemenu\Bootstrap();
 		$this->assertTrue($bootstrap->hasModuleBeenLoaded($this->getModuleMenuModuleFolder()));
 	}
 
 	public function testIsModuleRegisteredWithModuleMenu() {
 		$this->assertTrue(true);
+	}
+
+	public function testFindNewModule() {
+
+		$bootstrap = new \mata\modulemenu\Bootstrap();
+		$newModules = $bootstrap->findNewModule();
+		$this->assertTrue(is_array($newModules));
+		$this->assertEquals(0, count($newModules));
 	}
 
 	private function getModuleMenuModuleFolder() {

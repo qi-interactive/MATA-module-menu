@@ -53,7 +53,7 @@ class Bootstrap implements BootstrapInterface {
 		$app->getRequest()->isAjax;
 	}
 
-	private function findNewModule() {
+	public function findNewModule() {
 		$retVal = array();
 
 		$vendorFolder = \Yii::getAlias('@vendor');
