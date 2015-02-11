@@ -6,7 +6,7 @@ defined('YII_ENV') or define('YII_ENV', 'test');
 defined('YII_TEST_ENTRY_URL') or define('YII_TEST_ENTRY_URL', '/index.php');
 defined('YII_TEST_ENTRY_FILE') or define('YII_TEST_ENTRY_FILE', __DIR__ . '/../application/web/index.php');
 
-defined('VENDOR_DIR') or define('VENDOR_DIR', is_dir(__DIR__ . '/../../../..') ? __DIR__ . '/../../../..' : __DIR__ . '/../../');
+defined('VENDOR_DIR') or define('VENDOR_DIR', is_dir(__DIR__ . '/../../vendor') ? __DIR__ . '/../../vendor' :  __DIR__ . '/../../../..');
 
 // require_once(VENDOR_DIR . '/autoload.php');
  	require_once(VENDOR_DIR . '/yiisoft/yii2/Yii.php');
