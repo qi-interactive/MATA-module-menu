@@ -78,7 +78,7 @@ class Bootstrap implements BootstrapInterface {
 		return $retVal;
 	}
 
-	private function getModuleFile($folder) {
+	public function getModuleFile($folder) {
 		if (file_exists($folder . DIRECTORY_SEPARATOR . "Module.php"))
 			return $folder . DIRECTORY_SEPARATOR . "Module.php";
 	}
@@ -106,7 +106,7 @@ class Bootstrap implements BootstrapInterface {
 		return $module;
 	}
 
-	private function hasModuleBeenLoaded($folder) {
+	public function hasModuleBeenLoaded($folder) {
 		$includeFiles = require(\Yii::getAlias('@vendor') . DIRECTORY_SEPARATOR . "composer"
 			. DIRECTORY_SEPARATOR . "autoload_psr4.php");
 
