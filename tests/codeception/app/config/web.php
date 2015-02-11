@@ -10,9 +10,9 @@ return [
         '@bower'         => VENDOR_DIR . '/bower',
     ],
     'modules' => [
-        // 'modulemenu' => [
-        //     'class' => 'mata\modulemenu\Module',
-        // ]
+        'moduleMenu' => [
+            'class' => 'mata\modulemenu\Module',
+        ]
     ],
     'components' => [
         'assetManager' => [

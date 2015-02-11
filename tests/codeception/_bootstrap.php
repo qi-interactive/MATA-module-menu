@@ -8,8 +8,8 @@ defined('YII_TEST_ENTRY_FILE') or define('YII_TEST_ENTRY_FILE', __DIR__ . '/../a
 
 defined('VENDOR_DIR') or define('VENDOR_DIR', is_dir(__DIR__ . '/../../vendor') ? __DIR__ . '/../../vendor' :  __DIR__ . '/../../../..');
 
-// require_once(VENDOR_DIR . '/autoload.php');
- 	require_once(VENDOR_DIR . '/yiisoft/yii2/Yii.php');
+require_once(VENDOR_DIR . '/autoload.php');
+require_once(VENDOR_DIR . '/yiisoft/yii2/Yii.php');
 
 $_SERVER['SCRIPT_FILENAME'] = YII_TEST_ENTRY_FILE;
 $_SERVER['SCRIPT_NAME']     = YII_TEST_ENTRY_URL;
