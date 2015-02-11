@@ -18,9 +18,6 @@
             "mata\\modulemenu\\": ""
         }
     },
-    "scripts": {
-           "post-package-install": ["mata\\modulemenu\\installers\\Installer::postPackageInstall"]
-       },
     "extra": {
         "bootstrap": "mata\\modulemenu\\Bootstrap"
     }

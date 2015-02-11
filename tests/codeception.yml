@@ -8,13 +8,6 @@ settings:
     bootstrap: _bootstrap.php
     colors: true
     memory_limit: 1024M
-modules:
-    config:
-        Db:
-            dsn: ''
-            user: ''
-            password: ''
-            dump: codeception/_data/dump.sql
 coverage:
     enabled: true   
     include: 
@@ -23,6 +16,7 @@ coverage:
     exclude:
         - ../vendor/*
         - ../views/*
+        - ../models/*
         - ../assets/*
         - ../migrations/*
         - ../tests/*

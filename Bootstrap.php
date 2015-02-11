@@ -31,9 +31,7 @@ class Bootstrap implements BootstrapInterface {
 
 	public function bootstrap($app) {
 
-		if (YII_DEBUG == false || 
-			$app instanceof ConsoleApplication ||
-			$app->getRequest()->isAjax)
+		if ($this->checkIfShouldRun($app))
 			return;
 
 		$newModule = $this->findNewModule();
@@ -46,6 +44,13 @@ class Bootstrap implements BootstrapInterface {
 					"modules" => $event->data
 					]);
 			}, $newModule);
+	}
+
+	public function checkIfShouldRun($app) {
+		return YII_DEBUG == false || 
+		YII_TEST_ENTRY_URL == false ||
+		$app instanceof ConsoleApplication ||
+		$app->getRequest()->isAjax;
 	}
 
 	private function findNewModule() {
@@ -107,13 +112,16 @@ class Bootstrap implements BootstrapInterface {
 
 		foreach ($includeFiles as $namespace => $path) {
 
+			// This module cannot be added to the menu, yet.
+			if ($namespace == "mata\modulemenu\\")
+				return true;
+
 			$moduleClassPath = $namespace . "Module";
 
 			if (current($path) ==$folder ) {
 				// The Module we are trying to parse has been included by Composer
 				// Check if it's already defined, otherwise class name clash will occur
 				$declaredClasses = get_declared_classes();
-
 				if (in_array($moduleClassPath, $declaredClasses))
 					return true;
 			}
