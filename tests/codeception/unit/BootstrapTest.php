@@ -7,7 +7,7 @@ use yii\web\Application;
 use yii\web\Request;
 use mata\modulemenu\models\Module as ModuleModel;
 use tests\codeception\fixtures\ModuleFixture;
-// require("Bootstrap.php");
+use mata\modulemenu\migrations\m150208_130115_init;
 
 /**
  * This is the base class for all yii framework unit tests, which requires
@@ -15,15 +15,27 @@ use tests\codeception\fixtures\ModuleFixture;
  */
 class BootstrapTestCase extends TestCase {
 
+	protected function tearDown() {
+		$migration = new m150208_130115_init();
+		$migration->init();
+		$migration->down();
+
+		parent::tearDown();
+	}
 
 	public function fixtures()
 	{
-	    return [
-	        'user' => [
-	            'class' => ModuleFixture::className(),
-	            'dataFile' => '@tests/codeception/fixtures/data/init_module.php'
-	        ],
-	    ];
+
+		$migration = new m150208_130115_init();
+		$migration->init();
+		$migration->up();
+
+		return [
+		'user' => [
+		'class' => ModuleFixture::className(),
+		'dataFile' => '@tests/codeception/fixtures/data/init_module.php'
+		],
+		];
 	}
 
 

@@ -9,8 +9,10 @@
  * file that was distributed with this source code.
  */
 
+namespace mata\modulemenu\migrations;
+
 use yii\db\Schema;
-use mata\user\migrations\Migration;
+use yii\db\Migration;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com
@@ -23,7 +25,7 @@ class m150208_130115_init extends Migration
 			'Id'                   => Schema::TYPE_PK,
 			'Name'             => Schema::TYPE_STRING . '(128) NOT NULL',
 			'Order'                => Schema::TYPE_SMALLINT . '(2) NOT NULL',
-			], $this->tableOptions);
+			]);
 
 		$this->createTable('{{%matamodulemenu_module}}', [
 			'Id'        => Schema::TYPE_PK,
@@ -32,7 +34,7 @@ class m150208_130115_init extends Migration
 			'Location'             => Schema::TYPE_STRING . '(255) NOT NULL',
 			'Enabled' 	=> Schema::TYPE_SMALLINT . '(1) NOT NULL DEFAULT 1',
 			'Config' => Schema::TYPE_TEXT,
-			], $this->tableOptions);
+			]);
 
 		$this->addForeignKey('fk_matamodulemenugroup_matamodulemenumodule', '{{%matamodulemenu_module}}', 'GroupId', '{{%matamodulemenu_group}}', 'Id', 'CASCADE', 'RESTRICT');
 	}

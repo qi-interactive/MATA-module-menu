@@ -16,7 +16,7 @@ use yii\base\BootstrapInterface;
 use yii\base\InvalidConfigException;
 use yii\i18n\PhpMessageSource;
 use yii\web\GroupUrlRule;
-use yii\console\Application as ConsoleApplication;
+use yii\web\Application as WebApplication;
 use yii\web\User;
 use yii\base\Event;
 use yii\web\View;
@@ -31,7 +31,7 @@ class Bootstrap implements BootstrapInterface {
 
 	public function bootstrap($app) {
 
-		if ($this->checkIfShouldRun($app))
+		if ($this->checkIfShouldRun($app) == false)
 			return;
 
 		$newModule = $this->findNewModule();
@@ -47,10 +47,10 @@ class Bootstrap implements BootstrapInterface {
 	}
 
 	public function checkIfShouldRun($app) {
-		return YII_DEBUG == false || 
-		YII_TEST_ENTRY_URL == false ||
-		$app instanceof ConsoleApplication ||
-		$app->getRequest()->isAjax;
+		return YII_DEBUG == true && 
+		defined('YII_TEST_ENTRY_URL') == false &&
+		$app instanceof WebApplication &&
+		$app->getRequest()->isAjax == false;
 	}
 
 	public function findNewModule() {
