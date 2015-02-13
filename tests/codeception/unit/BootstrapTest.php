@@ -17,9 +17,12 @@ use mata\modulemenu\controllers\BootstrapController;
 class BootstrapTestCase extends TestCase {
 
 	protected function tearDown() {
-		$migration = new m150208_130115_init();
-		$migration->init();
-		// $migration->down();
+
+		try {
+			$migration = new m150208_130115_init();
+			$migration->init();
+			$migration->down();
+		} catch (Exception $e) {}
 
 		parent::tearDown();
 	}
@@ -30,8 +33,7 @@ class BootstrapTestCase extends TestCase {
 
 		$migration = new m150208_130115_init();
 		$migration->init();
-		// $migration->up();
-
+		$migration->up();
 
 		return [
 		'user' => [
@@ -85,8 +87,8 @@ class BootstrapTestCase extends TestCase {
 		$testName = 'UnitTestName' . time();
 
 		$_GET = ['module' => [
-			'Name' => $testName,
-			'Location' => 'DummyLocation'
+		'Name' => $testName,
+		'Location' => 'DummyLocation'
 		]];
 
 		$controller->actionIndex();
