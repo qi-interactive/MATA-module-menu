@@ -6,9 +6,12 @@ use Codeception\Util\Stub;
 use yii\web\Application;
 use yii\web\Request;
 use mata\modulemenu\models\Module as ModuleModel;
+use mata\modulemenu\models\Group as GroupModel;
 use tests\codeception\fixtures\ModuleFixture;
+use tests\codeception\fixtures\GroupFixture;
 use mata\modulemenu\migrations\m150208_130115_init;
 use mata\modulemenu\controllers\BootstrapController;
+use yii\db\Exception;
 
 /**
  * This is the base class for all yii framework unit tests, which requires
@@ -18,31 +21,31 @@ class BootstrapTestCase extends TestCase {
 
 	protected function tearDown() {
 
-		try {
-			$migration = new m150208_130115_init();
-			$migration->init();
-			$migration->down();
-		} catch (Exception $e) {}
+		$migration = new m150208_130115_init();
+		$migration->init();
+		$migration->down();
 
 		parent::tearDown();
 	}
 
-	public function fixtures()
-	{
-
+	public function fixtures() {
 
 		$migration = new m150208_130115_init();
 		$migration->init();
 		$migration->up();
 
+
 		return [
-		'user' => [
+		'group' => [
+		'class' => GroupFixture::className(),
+		'dataFile' => '@tests/codeception/fixtures/data/init_group.php'
+		],
+		'module' => [
 		'class' => ModuleFixture::className(),
 		'dataFile' => '@tests/codeception/fixtures/data/init_module.php'
-		],
+		]
 		];
 	}
-
 
 	public function testShouldNotRun() { 
 		$bootstrap = new \mata\modulemenu\Bootstrap();
@@ -78,6 +81,24 @@ class BootstrapTestCase extends TestCase {
 			//  })
 
 			// );
+	}
+
+	public function testNewGroupIndexIsAnIncrement() {
+		$maxOrder = GroupModel::find()
+		->select('max(`Order`)')
+		->scalar();
+
+		$this->assertEquals(2, $maxOrder);
+
+
+		$newGroup = new GroupModel();
+		$newGroup->attributes = [
+		"Name" => "TestGroup"
+		];
+
+		$this->assertTrue($newGroup->save());
+		$this->assertEquals(3, $newGroup->Order);
+
 	}
 
 	public function testBootstrapController() {

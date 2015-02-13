@@ -48,9 +48,6 @@ class Module extends \yii\db\ActiveRecord
             $group = new Group();
             $group->Name = $this->Name;
 
-            // TODO remove hardcoded order;
-            $group->Order = 1;
-
             if ($group->save() == false)
                 throw new HttpException(current(current($group->getErrors())));
 

@@ -29,10 +29,25 @@ class Group extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Name', 'Order'], 'required'],
-            [['Order'], 'integer'],
-            [['Name'], 'string', 'max' => 128]
+        [['Name', 'Order'], 'required'],
+        [['Order'], 'integer'],
+        [['Name'], 'string', 'max' => 128]
         ];
+    }
+
+
+    public function beforeValidate() {
+
+        if ($this->Order == null) {
+
+            $maxOrder = self::find()
+            ->select('max(`Order`)')
+            ->scalar();
+
+            $this->Order = $maxOrder == null ? 1 : $maxOrder + 1;
+        }
+
+        return parent::beforeValidate();
     }
 
     /**
@@ -41,9 +56,9 @@ class Group extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Id' => 'ID',
-            'Name' => 'Name',
-            'Order' => 'Order',
+        'Id' => 'ID',
+        'Name' => 'Name',
+        'Order' => 'Order',
         ];
     }
 

@@ -16,7 +16,6 @@ coverage:
     exclude:
         - ../vendor/*
         - ../views/*
-        - ../models/*
         - ../assets/*
         - ../migrations/*
         - ../tests/*
