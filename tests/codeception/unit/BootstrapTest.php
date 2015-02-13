@@ -8,6 +8,7 @@ use yii\web\Request;
 use mata\modulemenu\models\Module as ModuleModel;
 use tests\codeception\fixtures\ModuleFixture;
 use mata\modulemenu\migrations\m150208_130115_init;
+use mata\modulemenu\controllers\BootstrapController;
 
 /**
  * This is the base class for all yii framework unit tests, which requires
@@ -18,7 +19,7 @@ class BootstrapTestCase extends TestCase {
 	protected function tearDown() {
 		$migration = new m150208_130115_init();
 		$migration->init();
-		$migration->down();
+		// $migration->down();
 
 		parent::tearDown();
 	}
@@ -26,9 +27,11 @@ class BootstrapTestCase extends TestCase {
 	public function fixtures()
 	{
 
+
 		$migration = new m150208_130115_init();
 		$migration->init();
-		$migration->up();
+		// $migration->up();
+
 
 		return [
 		'user' => [
@@ -77,6 +80,21 @@ class BootstrapTestCase extends TestCase {
 
 	public function testBootstrapController() {
 		$modules = ModuleModel::find();
+
+		$controller = new BootstrapController(null, null);
+		$testName = 'UnitTestName' . time();
+
+		$_GET = ['module' => [
+			'Name' => $testName,
+			'Location' => 'DummyLocation'
+		]];
+
+		$controller->actionIndex();
+
+		$this->assertNotNull(ModuleModel::find()
+			->where(['Name' => $testName])
+			->one());
+
 	}
 
 	public function testEnsurePromptShownForNewModule() {
