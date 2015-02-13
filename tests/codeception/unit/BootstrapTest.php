@@ -83,6 +83,20 @@ class BootstrapTestCase extends TestCase {
 			// );
 	}
 
+
+	public function testNewGroupIndexIsAnIncrementWithNoOtherGroups() {
+		GroupModel::deleteAll();
+
+		$newGroup = new GroupModel();
+		$newGroup->attributes = [
+		"Name" => "TestGroup"
+		];
+
+		$this->assertTrue($newGroup->save());
+		$this->assertEquals(1, $newGroup->Order);
+
+	}
+
 	public function testNewGroupIndexIsAnIncrement() {
 		$maxOrder = GroupModel::find()
 		->select('max(`Order`)')
