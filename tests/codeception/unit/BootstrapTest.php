@@ -1,9 +1,12 @@
 <?php
 
 namespace mata\modulemenu\tests;
-
 use yii\codeception\TestCase;
-
+use Codeception\Util\Stub;
+use yii\web\Application;
+use yii\web\Request;
+use mata\modulemenu\models\Module as ModuleModel;
+use tests\codeception\fixtures\ModuleFixture;
 // require("Bootstrap.php");
 
 /**
@@ -12,13 +15,59 @@ use yii\codeception\TestCase;
  */
 class BootstrapTestCase extends TestCase {
 
+
+	public function fixtures()
+	{
+	    return [
+	        'user' => [
+	            'class' => ModuleFixture::className(),
+	            'dataFile' => '@tests/codeception/fixtures/data/init_module.php'
+	        ],
+	    ];
+	}
+
+
 	public function testShouldNotRun() { 
 		$bootstrap = new \mata\modulemenu\Bootstrap();
 		$this->assertTrue(YII_DEBUG);
 		$this->assertFalse($bootstrap->checkIfShouldRun(\Yii::$app));
+
+		// $stubConfig = [[
+		// 	'id' => "randomId",
+		// 	'basePath' => dirname(__DIR__)
+		// ]];
+
+		// $this->mockApplication([
+		//            'language' => 'ru-RU',
+		//            'components' => [
+		//                'request' => [
+
+		//                ],
+		//            ],
+		//        ]);
+
+		// $user =  $this->getMockBuilder('yii\web\Application')->getMock();
+
+		// $user->method('getAuthKey')->will($this->returnCallback(function() { return 'some_auth_key'; }));
+		    // ->expects($this->once())
+		    // ->method('getRequest')
+		    // ->will($this->returnCallback(function() {echo 1; exit; return true;}));
+
+
+		// $stubApp = Stub::construct('yii\web\Application', 
+			// $stubConfig
+			// array('getRequest' => function () { 
+			// 	return new Request();
+			//  })
+
+			// );
 	}
 
-	public function testEEnsurePromptShownForNewModule() {
+	public function testBootstrapController() {
+		$modules = ModuleModel::find();
+	}
+
+	public function testEnsurePromptShownForNewModule() {
 		$this->assertTrue(true);
 	}
 

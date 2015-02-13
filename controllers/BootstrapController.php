@@ -14,6 +14,5 @@ class BootstrapController extends Controller {
 
 		if ($module->save() == false)
 			throw new HttpException(current(current($module->getErrors())));
-
 	}
 }

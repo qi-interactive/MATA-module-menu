@@ -24,13 +24,15 @@ return [
             'enableCsrfValidation'   => false,
             'enableCookieValidation' => false
         ],
-            'db' => [
-                        'class' => 'yii\db\Connection',
-                        'dsn' => 'mysql:host=localhost;dbname=mata-module-testing',
-                        'username' => 'mata',
-                        'password' => 'Qseft56%',
-                        'charset' => 'utf8',
-        ],
+
+        'db' => require __DIR__ . '/db.php',
+        //     'db' => [
+        //                 'class' => 'yii\db\Connection',
+        //                 'dsn' => 'mysql:host=localhost;dbname=mata-module-testing',
+        //                 'username' => 'mata',
+        //                 'password' => 'Qseft56%',
+        //                 'charset' => 'utf8',
+        // ],
         'mailer' => [
             // 'class' => 'yii\swiftmailer\Mailer',
             // 'useFileTransport' => true
