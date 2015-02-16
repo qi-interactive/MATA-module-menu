@@ -5,7 +5,7 @@ use yii\helpers\Html;
 BootstrapAsset::register($this);
 ?>
 
-<div id="module-menu-bootstrap-prompt"  class="row">
+<div style="display: block; position: relative; z-index: 9999" id="module-menu-bootstrap-prompt"  class="row">
 	<div class="col-xs-12">
 		<div class="alert alert-info">
 			<?php foreach ($modules as $module): ?>

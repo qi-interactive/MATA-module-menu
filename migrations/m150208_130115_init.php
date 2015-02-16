@@ -9,8 +9,6 @@
  * file that was distributed with this source code.
  */
 
-namespace mata\modulemenu\migrations;
-
 use yii\db\Schema;
 use yii\db\Migration;
 

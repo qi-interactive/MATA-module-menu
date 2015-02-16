@@ -21,6 +21,8 @@ use mata\base\Module as BaseModule;
  */
 class Module extends BaseModule {
 
+	public $runBootstrap = true;
+	
 	public function getVersion() {
 		return 1.0;
 	}

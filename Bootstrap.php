@@ -47,7 +47,12 @@ class Bootstrap implements BootstrapInterface {
 	}
 
 	public function checkIfShouldRun($app) {
-		return YII_DEBUG == true && 
+
+		$thisModule = $app->getModule("moduleMenu");
+
+		return $thisModule && 
+		$thisModule->runBootstrap &&
+		YII_DEBUG == true && 
 		defined('YII_TEST_ENTRY_URL') == false &&
 		$app instanceof WebApplication &&
 		$app->getRequest()->isAjax == false;
@@ -93,10 +98,8 @@ class Bootstrap implements BootstrapInterface {
 		if ($this->isAlreadyRegisteredWithMenu($folder))
 			return false;
 
-		if ($this->hasModuleBeenLoaded($folder))
-			return false;
-
-		include $moduleClassFile;
+		if ($this->hasModuleBeenLoaded($folder) == false)
+			include $moduleClassFile;
 
 		$module = new Module(null);
 
