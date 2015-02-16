@@ -92,7 +92,7 @@ class Bootstrap implements BootstrapInterface {
 
 		$moduleClassFile = $this->getModuleFile($folder);
 		
-		if ($moduleClassFile == null)
+		if ($moduleClassFile === null)
 			return false;
 
 		if ($this->isAlreadyRegisteredWithMenu($folder))
