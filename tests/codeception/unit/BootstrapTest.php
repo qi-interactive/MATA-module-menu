@@ -160,10 +160,26 @@ class BootstrapTestCase extends TestCase {
 
 	public function testFindNewModule() {
 
+
+		$mataFolder = \Yii::getAlias("@mata") . DIRECTORY_SEPARATOR . 
+		".." . DIRECTORY_SEPARATOR;
+
+		$noOfMataModules = 0;
+
+		foreach(glob($mataFolder . "*") as $folder) {
+			echo $folder . "\n";
+
+			if (file_exists($folder . DIRECTORY_SEPARATOR . "Module.php")) {
+				$noOfMataModules++;
+				// we handle only one module at a time, for the time being
+				break;
+			}
+		}
+
 		$bootstrap = new \mata\modulemenu\Bootstrap();
 		$newModules = $bootstrap->findNewModule();
 		$this->assertTrue(is_array($newModules));
-		$this->assertEquals(1, count($newModules));
+		$this->assertEquals($noOfMataModules, count($newModules));
 	}
 
 	private function getModuleMenuModuleFolder() {
