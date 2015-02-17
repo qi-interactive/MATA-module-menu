@@ -1,5 +1,6 @@
 {
-    "name": "mata/mata-app",
-    "description": "MATA Application Template",
-    "icon" : "web/images/module-icon.svg"
+    "name": "Module Management",
+    "description": "Allows management of modules inside MATA CMS",
+    "icon" : "/images/module-icon.svg",
+    "version" : 1.0
 }

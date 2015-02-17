@@ -23,11 +23,4 @@ class Module extends BaseModule {
 
 	public $runBootstrap = true;
 	
-	public function getVersion() {
-		return 1.0;
-	}
-	
-	public function getName() {
-		return "Module Menu";
-	}
 }

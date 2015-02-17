@@ -13,15 +13,13 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class BootstrapAsset extends AssetBundle
+class ModuleAsset extends AssetBundle
 {
-	public $sourcePath = '@vendor';
+	public $sourcePath = '@vendor/mata/mata-module-menu/web';
 
 	public $js = [
-	'mata/mata-module-menu/web/js/bootstrap.js'
 	];
 
 	public $depends = [
-	'yii\web\YiiAsset',
 	];
 }

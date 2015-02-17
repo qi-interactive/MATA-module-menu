@@ -14,7 +14,7 @@ class ModuleTestCase extends TestCase {
 
 	public function testVersionNumber() { 
 		$this->assertEquals(1.0, \Yii::$app->getModule("moduleMenu")->getVersion());
-		$this->assertEquals("Module Menu", \Yii::$app->getModule("moduleMenu")->getName());
+		$this->assertEquals("Module Management", \Yii::$app->getModule("moduleMenu")->getName());
 		
 	}
 
