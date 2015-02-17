@@ -1,0 +1,5 @@
+build:
+    tests:
+        override:
+            -
+                command: vendor/bin/codecept run -c tests/
