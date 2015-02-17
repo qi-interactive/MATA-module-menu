@@ -12,7 +12,7 @@ use tests\codeception\fixtures\GroupFixture;
 use mata\modulemenu\controllers\BootstrapController;
 use yii\db\Exception;
 
-require (\Yii::getAlias("@vendor") . "/mata/mata-module-menu/migrations/m150208_130115_init.php");
+require (\Yii::getAlias("@mata/module-menu") . "/migrations/m150208_130115_init.php");
 
 /**
  * This is the base class for all yii framework unit tests, which requires
