@@ -138,6 +138,4 @@ class Bootstrap implements BootstrapInterface {
 
 		return $moduleMenuRecord != null;
 	}
-
 }
-

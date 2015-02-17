@@ -10,6 +10,7 @@
  */
 
 namespace mata\modulemenu;
+
 use mata\base\Module as BaseModule;
 
 /**
@@ -22,5 +23,4 @@ use mata\base\Module as BaseModule;
 class Module extends BaseModule {
 
 	public $runBootstrap = true;
-	
 }
