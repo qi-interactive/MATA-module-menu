@@ -25,10 +25,6 @@ return [
             'enableCookieValidation' => false
         ],
 
-        'db' => require __DIR__ . '/db.php',
-        'mailer' => [
-            // 'class' => 'yii\swiftmailer\Mailer',
-            // 'useFileTransport' => true
-        ],
+        'db' => require __DIR__ . '/db.php'
     ],
 ];

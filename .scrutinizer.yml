@@ -3,3 +3,6 @@ build:
         override:
             -
                 command: vendor/bin/codecept run -c tests/
+    dependencies:
+        before:
+            - mysql -uroot -e 'CREATE DATABASE mata-module-menu'
