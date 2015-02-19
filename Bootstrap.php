@@ -23,6 +23,7 @@ use yii\web\View;
 use mata\modulemenu\models\Module as ModuleModel;
 use Composer\Autoload\ClassLoader;
 use mata\helpers\MataModuleHelper;
+use mata\helpers\ComposerHelper;
 
 /**
  * @author Marcin Wiatr<marcin@qi-interactive.com>
@@ -71,9 +72,13 @@ class Bootstrap implements BootstrapInterface {
 				continue;
 
 			if (($module = $this->isModuleRegisteredWithModuleMenu($folder)) != false) {
+
+				$moduleFile = ComposerHelper::getLibraryNamespaceByFolder($folder) . "Module";
+				$module = new $moduleFile(null);
+
 				$retVal[] = [
 				"Name" => $module->getName(),
-				"Location" => $folder
+				"Location" => ComposerHelper::getLibraryNamespaceByFolder($folder)
 				];
 				// TODO we can run this only once because we have a name clash. How to go over it? 
 				return $retVal;
@@ -91,11 +96,12 @@ class Bootstrap implements BootstrapInterface {
 	private function isModuleRegisteredWithModuleMenu($folder) {
 
 		$moduleClassFile = $this->getModuleFile($folder);
-		
+		$namespace = ComposerHelper::getLibraryNamespaceByFolder($folder);
+
 		if ($moduleClassFile === null)
 			return false;
 
-		if ($this->isAlreadyRegisteredWithMenu($folder))
+		if ($this->isAlreadyRegisteredWithMenu($namespace))
 			return false;
 
 		if ($this->hasModuleBeenLoaded($folder) == false)
@@ -131,9 +137,9 @@ class Bootstrap implements BootstrapInterface {
 		}
 	}
 
-	private function isAlreadyRegisteredWithMenu($folder) {
+	private function isAlreadyRegisteredWithMenu($namespace) {
 		$moduleMenuRecord = ModuleModel::find()
-		->where(['Location' => $folder])
+		->where(['Location' => $namespace])
 		->one();
 
 		return $moduleMenuRecord != null;

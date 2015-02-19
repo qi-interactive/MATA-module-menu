@@ -10,7 +10,7 @@ BootstrapAsset::register($this);
 		<div class="alert alert-info">
 			<?php foreach ($modules as $module): ?>
 
-				<form id="module-menu-bootstrap" action="/mata/moduleMenu/bootstrap" method="POST">
+				<form id="module-menu-bootstrap" action="/mata-cms/moduleMenu/bootstrap" method="POST">
 
 					<p>Would you like to add the module <?php echo $module["Name"]; ?> to <?php echo \Yii::$app->name ?> menu?</p>
 					<input type="hidden" name="_csrf" value="<?php echo Yii::$app->request->getCsrfToken() ?>">
