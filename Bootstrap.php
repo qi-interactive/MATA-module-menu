@@ -55,7 +55,7 @@ class Bootstrap implements BootstrapInterface {
 		$thisModule->runBootstrap &&
 		YII_DEBUG == true && 
 		defined('YII_TEST_ENTRY_URL') == false &&
-		$app instanceof WebApplication &&
+		is_a($app, "yii\console\Application") == false &&
 		$app->getRequest()->isAjax == false;
 	}
 
