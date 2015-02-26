@@ -23,8 +23,7 @@ class Module extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'matamodulemenu_module';
     }
 

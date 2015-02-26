@@ -24,7 +24,13 @@ class Module extends BaseModule {
 
 	public $runBootstrap = true;
 
+	public $moduleFolders = ["@vendor/matacms"];
+
 	public function getNavigation() {
 		return null;
+	}
+
+	public function canShowInNavigation() {
+		return false;
 	}
 }

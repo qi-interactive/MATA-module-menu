@@ -30,7 +30,11 @@ use mata\helpers\ComposerHelper;
  */
 class Bootstrap implements BootstrapInterface {
 
+	public $thisModule;
+
 	public function bootstrap($app) {
+
+		$this->thisModule = $app->getModule("moduleMenu");
 
 		if ($this->checkIfShouldRun($app) == false)
 			return;
@@ -49,10 +53,8 @@ class Bootstrap implements BootstrapInterface {
 
 	public function checkIfShouldRun($app) {
 
-		$thisModule = $app->getModule("moduleMenu");
-
-		return $thisModule && 
-		$thisModule->runBootstrap &&
+		return $this->thisModule && 
+		$this->thisModule->runBootstrap &&
 		YII_DEBUG == true && 
 		defined('YII_TEST_ENTRY_URL') == false &&
 		is_a($app, "yii\console\Application") == false &&
@@ -62,12 +64,28 @@ class Bootstrap implements BootstrapInterface {
 	public function findNewModule() {
 		$retVal = array();
 
-		$vendorFolder = \Yii::getAlias('@vendor');
-		$mataFolder = $vendorFolder . DIRECTORY_SEPARATOR . "mata";
 
-    		// Open a known directory, and proceed to read its contents
-		foreach(glob($mataFolder . DIRECTORY_SEPARATOR . "*") as $folder) {
-			
+		$folders = $this->thisModule->moduleFolders;
+
+		foreach ($folders as $folder)
+			$retVal = $this->findInFolder($folder);
+
+
+		// $vendorFolder = \Yii::getAlias('@vendor');
+		// $mataFolder = $vendorFolder . DIRECTORY_SEPARATOR . "mata";
+
+		
+		// $this->findInFolder($mataCMSFolder);
+
+
+		return $retVal;
+	}
+
+	private function findInFolder($rootFolder) {
+
+		    		// Open a known directory, and proceed to read its contents
+		foreach(glob(\Yii::getAlias($rootFolder) . DIRECTORY_SEPARATOR . "*") as $folder) {
+
 			if (is_dir($folder) == false)
 				continue;
 
@@ -80,12 +98,10 @@ class Bootstrap implements BootstrapInterface {
 				"Name" => $module->getName(),
 				"Location" => ComposerHelper::getLibraryNamespaceByFolder($folder)
 				];
-				// TODO we can run this only once because we have a name clash. How to go over it? 
+						// TODO we can run this only once because we have a name clash. How to go over it? 
 				return $retVal;
 			}
 		}
-
-		return $retVal;
 	}
 
 	public function getModuleFile($folder) {
@@ -106,6 +122,7 @@ class Bootstrap implements BootstrapInterface {
 
 		if ($this->hasModuleBeenLoaded($folder) == false)
 			include $moduleClassFile;
+
 
 		$module = new Module(null);
 
