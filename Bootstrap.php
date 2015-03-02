@@ -52,13 +52,13 @@ class Bootstrap implements BootstrapInterface {
 	}
 
 	public function checkIfShouldRun($app) {
-
 		return $this->thisModule && 
-		$this->thisModule->runBootstrap &&
-		YII_DEBUG == true && 
-		defined('YII_TEST_ENTRY_URL') == false &&
-		is_a($app, "yii\console\Application") == false &&
-		$app->getRequest()->isAjax == false;
+			$this->thisModule->runBootstrap &&
+			\Yii::$app->user->isGuest == false &&
+			YII_DEBUG == true && 
+			defined('YII_TEST_ENTRY_URL') == false &&
+			is_a($app, "yii\console\Application") == false &&
+			$app->getRequest()->isAjax == false;
 	}
 
 	public function findNewModule() {
