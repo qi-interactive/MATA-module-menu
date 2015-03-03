@@ -62,21 +62,17 @@ class Bootstrap implements BootstrapInterface {
 	}
 
 	public function findNewModule() {
+		
 		$retVal = array();
-
 
 		$folders = $this->thisModule->moduleFolders;
 
-		foreach ($folders as $folder)
+		foreach ($folders as $folder) {
 			$retVal = $this->findInFolder($folder);
 
-
-		// $vendorFolder = \Yii::getAlias('@vendor');
-		// $mataFolder = $vendorFolder . DIRECTORY_SEPARATOR . "mata";
-
-		
-		// $this->findInFolder($mataCMSFolder);
-
+			if (!empty($retVal))
+				break;
+		}
 
 		return $retVal;
 	}
