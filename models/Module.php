@@ -33,10 +33,10 @@ class Module extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-        [['GroupId', 'Location'], 'required'],
-        [['Id', 'GroupId', 'Enabled'], 'integer'],
+        [['Id','GroupId', 'Location'], 'required'],
+        [['GroupId', 'Enabled'], 'integer'],
         [['Config'], 'string'],
-        [['Name'], 'string', 'max' => 64],
+        [['Id','Name'], 'string', 'max' => 64],
         [['Location'], 'string', 'max' => 255]
         ];
     }

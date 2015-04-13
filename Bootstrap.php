@@ -24,7 +24,7 @@ use mata\modulemenu\models\Module as ModuleModel;
 use Composer\Autoload\ClassLoader;
 use mata\helpers\MataModuleHelper;
 use mata\helpers\ComposerHelper;
-
+use yii\helpers\Inflector; 
 /**
  * @author Marcin Wiatr<marcin@qi-interactive.com>
  */
@@ -100,7 +100,9 @@ class Bootstrap implements BootstrapInterface {
 
 				$retVal[] = [
 				"Name" => $module->getName(),
-				"Location" => $reflector->getNamespaceName() . "\\"
+				"Location" => $reflector->getNamespaceName() . "\\",
+				"Id" => lcfirst(Inflector::camelize($module->getName())),
+				"Config" => json_encode($module->getConfig())
 				];
 						// TODO we can run this only once because we have a name clash. How to go over it? 
 				return $retVal;

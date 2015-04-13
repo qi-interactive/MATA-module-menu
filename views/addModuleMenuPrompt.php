@@ -15,7 +15,10 @@ BootstrapAsset::register($this);
 					<p>Would you like to add the module <?php echo $module["Name"]; ?> to <?php echo \Yii::$app->name ?> menu?</p>
 					<input type="hidden" name="_csrf" value="<?php echo Yii::$app->request->getCsrfToken() ?>">
 
+
+					<?php echo Html::hiddenInput("module[Id]", $module["Id"]); ?>
 					<?php echo Html::hiddenInput("module[Name]", $module["Name"]); ?>
+					<?php echo Html::hiddenInput("module[Config]", $module["Config"]); ?>
 					<?php echo Html::hiddenInput("module[Location]", $module["Location"]); ?>
 					<?php echo Html::hiddenInput("module[Enabled]", null, [
 						"id" => "module-enabled"
