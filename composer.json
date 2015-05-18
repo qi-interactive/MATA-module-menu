@@ -8,10 +8,7 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "mata/mata-framework": "dev-development",
-        "codeception/codeception": "*",
-        "yiisoft/yii2-codeception": "*",
-        "yiisoft/yii2-faker": "*"
+        "mata/mata-framework": "~1.0.0-alpha"
     },
     "autoload": {
         "psr-4": {

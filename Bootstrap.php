@@ -1,12 +1,9 @@
 <?php
-
-/*
- * This file is part of the MATA project.
- *
- * (c) mata project <http://github.com/mata/>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ 
+/**
+ * @link http://www.matacms.com/
+ * @copyright Copyright (c) 2015 Qi Interactive Limited
+ * @license http://www.matacms.com/license/
  */
 
 namespace mata\modulemenu;
@@ -25,9 +22,7 @@ use Composer\Autoload\ClassLoader;
 use mata\helpers\MataModuleHelper;
 use mata\helpers\ComposerHelper;
 use yii\helpers\Inflector; 
-/**
- * @author Marcin Wiatr<marcin@qi-interactive.com>
- */
+
 class Bootstrap implements BootstrapInterface {
 
 	public $thisModule;

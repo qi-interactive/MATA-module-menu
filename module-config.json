@@ -1,6 +1,6 @@
 {
     "name": "Module Management",
-    "description": "Allows management of modules inside MATA CMS",
+    "description": "Manages and groups modules for MATA",
     "icon" : "/images/module-icon.svg",
-    "version" : 1.0
+    "version" : "1.0.0-alpha"
 }

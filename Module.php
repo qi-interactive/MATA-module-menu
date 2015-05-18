@@ -13,13 +13,6 @@ namespace mata\modulemenu;
 
 use mata\base\Module as BaseModule;
 
-/**
- * This is the main module class for the Yii2-user.
- *
- * @property array $modelMap
- *
- * @author Dmitry Erofeev <dmeroff@gmail.com>
- */
 class Module extends BaseModule {
 
 	public $runBootstrap = true;

@@ -1,23 +1,17 @@
 <?php
-
-/*
- * This file is part of the mata project.
- *
- * (c) mata project <http://github.com/mata/>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ 
+/**
+ * @link http://www.matacms.com/
+ * @copyright Copyright (c) 2015 Qi Interactive Limited
+ * @license http://www.matacms.com/license/
  */
 
 use yii\db\Schema;
 use yii\db\Migration;
 
-/**
- * @author Dmitry Erofeev <dmeroff@gmail.com
- */
 class m150208_130115_init extends Migration
 {
-	public function up()
+	public function safeUp()
 	{
 		$this->createTable('{{%matamodulemenu_group}}', [
 			'Id'                   => Schema::TYPE_PK,
@@ -37,7 +31,7 @@ class m150208_130115_init extends Migration
 		$this->addForeignKey('fk_matamodulemenugroup_matamodulemenumodule', '{{%matamodulemenu_module}}', 'GroupId', '{{%matamodulemenu_group}}', 'Id', 'CASCADE', 'RESTRICT');
 	}
 
-	public function down()
+	public function safeDown()
 	{
 		$this->dropTable('{{%matamodulemenu_module}}');
 		$this->dropTable('{{%matamodulemenu_group}}');
