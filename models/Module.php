@@ -1,4 +1,10 @@
 <?php
+ 
+/**
+ * @link http://www.matacms.com/
+ * @copyright Copyright (c) 2015 Qi Interactive Limited
+ * @license http://www.matacms.com/license/
+ */
 
 namespace mata\modulemenu\models;
 
@@ -20,16 +26,10 @@ use yii\web\HttpException;
  */
 class Module extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName() {
         return 'matamodulemenu_module';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -56,9 +56,6 @@ class Module extends \yii\db\ActiveRecord
         return true;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [

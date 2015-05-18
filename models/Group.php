@@ -1,4 +1,10 @@
 <?php
+ 
+/**
+ * @link http://www.matacms.com/
+ * @copyright Copyright (c) 2015 Qi Interactive Limited
+ * @license http://www.matacms.com/license/
+ */
 
 namespace mata\modulemenu\models;
 
@@ -23,9 +29,6 @@ class Group extends \yii\db\ActiveRecord
         return 'matamodulemenu_group';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -34,7 +37,6 @@ class Group extends \yii\db\ActiveRecord
         [['Name'], 'string', 'max' => 128]
         ];
     }
-
 
     public function beforeValidate() {
 
@@ -50,9 +52,6 @@ class Group extends \yii\db\ActiveRecord
         return parent::beforeValidate();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
