@@ -21,6 +21,10 @@ php yii migrate/up --migrationPath=@vendor/mata/mata-module-menu/migrations
 Changelog
 ---------
 
+## 1.0.2-alpha, July 20, 2015
+
+- Added migration for matamodulemenu_module (change Id from Int to Varchar)
+
 ## 1.0.1-alpha, June 9, 2015
 
 - Added dependency on mata/mata-framework : ~1.1.0-alpha
