@@ -1,5 +1,5 @@
 <?php
- 
+
 /**
  * @link http://www.matacms.com/
  * @copyright Copyright (c) 2015 Qi Interactive Limited
@@ -21,7 +21,7 @@ use mata\modulemenu\models\Module as ModuleModel;
 use Composer\Autoload\ClassLoader;
 use mata\helpers\MataModuleHelper;
 use mata\helpers\ComposerHelper;
-use yii\helpers\Inflector; 
+use yii\helpers\Inflector;
 
 class Bootstrap implements BootstrapInterface {
 
@@ -38,7 +38,7 @@ class Bootstrap implements BootstrapInterface {
 
 		if (!empty($newModule))
 			Event::on(View::className(), View::EVENT_BEGIN_BODY, function ($event) {
-				
+
 				$controller = $event->sender;
 				echo $controller->render("@vendor/mata/mata-module-menu/views/addModuleMenuPrompt", [
 					"modules" => $event->data
@@ -47,17 +47,20 @@ class Bootstrap implements BootstrapInterface {
 	}
 
 	public function checkIfShouldRun($app) {
-		return $this->thisModule && 
+		return $this->thisModule &&
 		$this->thisModule->runBootstrap &&
 		\Yii::$app->user->isGuest == false &&
-		YII_DEBUG == true && 
+		YII_DEBUG == true &&
 		defined('YII_TEST_ENTRY_URL') == false &&
 		is_a($app, "yii\console\Application") == false &&
 		$app->getRequest()->isAjax == false;
 	}
 
 	public function findNewModule() {
-		
+
+        if(!\Yii::$app->user->identity->getIsAdmin())
+            return [];
+
 		$retVal = array();
 
 		$folders = $this->thisModule->moduleFolders;
@@ -84,7 +87,7 @@ class Bootstrap implements BootstrapInterface {
 
 				$moduleNamespace = MataModuleHelper::getModuleNamespaceByDir($folder);
 
-				if ($moduleNamespace == null || $moduleNamespace == "") 
+				if ($moduleNamespace == null || $moduleNamespace == "")
 					continue;
 
 				$moduleNamespace = $moduleNamespace . "Module";
@@ -99,7 +102,7 @@ class Bootstrap implements BootstrapInterface {
 				"Id" => lcfirst(Inflector::camelize($module->getName())),
 				"Config" => json_encode($module->getConfig())
 				];
-						// TODO we can run this only once because we have a name clash. How to go over it? 
+						// TODO we can run this only once because we have a name clash. How to go over it?
 				return $retVal;
 			}
 		}
@@ -127,7 +130,7 @@ class Bootstrap implements BootstrapInterface {
 
 		$module = new Module(null);
 
-		if (MataModuleHelper::isMataModule($module) == false) 
+		if (MataModuleHelper::isMataModule($module) == false)
 			return false;
 
 		return $module;
