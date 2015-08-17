@@ -10,6 +10,9 @@
     "require": {
         "mata/mata-framework": "~1.1.0-alpha"
     },
+    "require-dev": {
+        "mata/mata-framework": "dev-development"
+    },
     "autoload": {
         "psr-4": {
             "mata\\modulemenu\\": ""
