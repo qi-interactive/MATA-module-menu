@@ -6,7 +6,7 @@ Manages and groups modules for MATA applications.
 Installation
 ------------
 
-- Add the module using composer: 
+- Add the module using composer:
 
 ```json
 "mata/mata-module-menu": "~1.0.0"
@@ -20,6 +20,10 @@ php yii migrate/up --migrationPath=@vendor/mata/mata-module-menu/migrations
 
 Changelog
 ---------
+
+## 1.0.3-alpha, August 21, 2015
+
+- Added ModuleMenuManager
 
 ## 1.0.2-alpha, July 20, 2015
 
