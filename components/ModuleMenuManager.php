@@ -56,7 +56,7 @@ class ModuleMenuManager extends Component
                 continue;
             }
 
-            if(!in_array($module->id, $userAccessibleModules))
+            if(!\Yii::$app->user->identity->getIsAdmin() && !in_array($module->id, $userAccessibleModules))
                 continue;
 
             $moduleAssetBundle = $module->getModuleAssetBundle();

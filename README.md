@@ -21,6 +21,10 @@ php yii migrate/up --migrationPath=@vendor/mata/mata-module-menu/migrations
 Changelog
 ---------
 
+## 1.0.3.1-alpha, August 23, 2015
+
+- Updated ModuleMenuManager and added migration for removing mata modules
+
 ## 1.0.3-alpha, August 21, 2015
 
 - Added ModuleMenuManager
