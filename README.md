@@ -21,6 +21,10 @@ php yii migrate/up --migrationPath=@vendor/mata/mata-module-menu/migrations
 Changelog
 ---------
 
+## 1.0.3.2-alpha, September 16, 2015
+
+- Updated migration for matamodulemenu_module (change Id from Int to Varchar)
+
 ## 1.0.3.1-alpha, August 23, 2015
 
 - Updated ModuleMenuManager and added migration for removing mata modules
