@@ -21,6 +21,10 @@ php yii migrate/up --migrationPath=@vendor/mata/mata-module-menu/migrations
 Changelog
 ---------
 
+## 1.0.3.3-alpha, September 24, 2015
+
+- Added additional links for subnavigation items
+
 ## 1.0.3.2-alpha, September 16, 2015
 
 - Updated migration for matamodulemenu_module (change Id from Int to Varchar)

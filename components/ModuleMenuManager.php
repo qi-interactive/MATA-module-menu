@@ -80,7 +80,8 @@ class ModuleMenuManager extends Component
                         'label' => $navigationItem["label"],
                         'url' => $navigationItem["url"],
                         'icon' =>  $asset->sourcePath . $navigationItem["icon"],
-                        'class' => isset($navigationItem["class"]) ? $navigationItem["class"] : null
+                        'class' => isset($navigationItem["class"]) ? $navigationItem["class"] : null,
+                        'additionalLinks' => isset($navigationItem["additionalLinks"]) ? $navigationItem["additionalLinks"] : null
                     ];
                 }
 
