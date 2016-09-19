@@ -21,6 +21,10 @@ php yii migrate/up --migrationPath=@vendor/mata/mata-module-menu/migrations
 Changelog
 ---------
 
+## 1.0.3.4-alpha, September 19, 2016
+
+- Saving ModuleId via addModuleMenuPrompt in lowercase
+
 ## 1.0.3.3-alpha, September 24, 2015
 
 - Added additional links for subnavigation items
