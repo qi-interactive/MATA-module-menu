@@ -16,7 +16,7 @@ BootstrapAsset::register($this);
 					<input type="hidden" name="_csrf" value="<?php echo Yii::$app->request->getCsrfToken() ?>">
 
 
-					<?php echo Html::hiddenInput("module[Id]", $module["Id"]); ?>
+					<?php echo Html::hiddenInput("module[Id]", mb_strtolower($module["Id"])); ?>
 					<?php echo Html::hiddenInput("module[Name]", $module["Name"]); ?>
 					<?php echo Html::hiddenInput("module[Config]", $module["Config"]); ?>
 					<?php echo Html::hiddenInput("module[Location]", $module["Location"]); ?>
@@ -26,7 +26,7 @@ BootstrapAsset::register($this);
 
 					<button data-value="1" class="btn btn-success"type="submit">Add module to menu</button>
 					<button data-value="0" class="btn btn-warning"type="submit">Don't ask me again</button>
-				</form>      
+				</form>
 
 			<?php endforeach; ?>
 		</div>
